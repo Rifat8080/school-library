@@ -148,7 +148,7 @@ I would like to thank microverse for giving me chance to work on this project
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/Rifat8080/school-library/blob/add-classes/LICENSE) licensed.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
