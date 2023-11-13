@@ -64,7 +64,7 @@ class RentalInputHandler
     [all_books[book_index], all_persons[person_index], date]
   end
 
-  def self.get_rental_person_id
+  def self.rental_person_id
     InputHandler.get_integer('ID of person: ')
   end
 end
@@ -120,7 +120,7 @@ class App
   end
 
   def get_rental(_all_persons)
-    id = RentalInputHandler.get_rental_person_id
+    id = RentalInputHandler.rental_person_id
     rental = @rental_manager.get_rental(id)
 
     if rental.nil?
