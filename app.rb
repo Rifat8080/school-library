@@ -29,10 +29,10 @@ class PersonInputHandler
 
     if type == 1
       permission = InputHandler.get_boolean('Has parent permission? [Y/N]: ')
-      return Student.new(age, name, parent_permission: permission) # Adjusted here
+      Student.new(age, name, parent_permission: permission) # Adjusted here
     else
       specialization = InputHandler.get_string('Specialization: ')
-      return Teacher.new(age, name, specialization)
+      Teacher.new(age, name, specialization)
     end
   end
 end
@@ -41,7 +41,7 @@ class BookInputHandler
   def self.create_book
     title = InputHandler.get_string('Title: ')
     author = InputHandler.get_string('Author: ')
-    return Book.new(title, author)
+    Book.new(title, author)
   end
 end
 
@@ -61,7 +61,7 @@ class RentalInputHandler
     person_index = InputHandler.get_integer('')
 
     date = InputHandler.get_string('Date: ')
-    return all_books[book_index], all_persons[person_index], date
+    [all_books[book_index], all_persons[person_index], date]
   end
 
   def self.get_rental_person_id
@@ -119,7 +119,7 @@ class App
     puts 'Rental created successfully'
   end
 
-  def get_rental(all_persons)
+  def get_rental(_all_persons)
     id = RentalInputHandler.get_rental_person_id
     rental = @rental_manager.get_rental(id)
 
