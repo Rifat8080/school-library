@@ -26,17 +26,16 @@ class PersonInputHandler
     type = InputHandler.get_integer('Do you want to create student (1) or a teacher (2)? [Input number]: ')
     age = InputHandler.get_integer('Age: ')
     name = InputHandler.get_string('Name: ')
-    
+
     if type == 1
       permission = InputHandler.get_boolean('Has parent permission? [Y/N]: ')
-      return Student.new(age, name, parent_permission: permission)  # Adjusted here
+      return Student.new(age, name, parent_permission: permission) # Adjusted here
     else
       specialization = InputHandler.get_string('Specialization: ')
       return Teacher.new(age, name, specialization)
     end
   end
 end
-
 
 class BookInputHandler
   def self.create_book
@@ -53,14 +52,14 @@ class RentalInputHandler
       puts "#{index}) Title: #{book.title}, Author: #{book.author}"
     end
     book_index = InputHandler.get_integer('')
-    
+
     puts 'Select person from the following list by number'
     all_persons.each_with_index do |person, index|
       person_type = person.instance_of?(Student) ? 'Student' : 'Teacher'
       puts "#{index})[#{person_type}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_index = InputHandler.get_integer('')
-    
+
     date = InputHandler.get_string('Date: ')
     return all_books[book_index], all_persons[person_index], date
   end
@@ -96,6 +95,7 @@ class App
       main
     end
   end
+
   def create_person
     person = PersonInputHandler.create_person
     if person.is_a?(Student)

@@ -1,6 +1,6 @@
 # rental_manager.rb
 
-require_relative 'rental'  # Adjust the path accordingly based on your project structure
+require_relative 'rental' # Adjust the path accordingly based on your project structure
 
 class RentalManager
   attr_accessor :all_rentals
