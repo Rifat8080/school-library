@@ -1,3 +1,5 @@
+# person_manager.rb
+
 require './student'
 require './teacher'
 
@@ -15,13 +17,17 @@ class PersonManager
     end
   end
 
+  def add_person(person)
+    @all_persons.push(person)
+  end
+
   def create_student(age, name, permission)
     person = Student.new(age, name, parent_permission: permission)
-    @all_persons.push(person)
+    add_person(person)
   end
 
   def create_teacher(age, name, specialization)
     person = Teacher.new(age, name, specialization)
-    @all_persons.push(person)
+    add_person(person)
   end
 end

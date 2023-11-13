@@ -1,11 +1,24 @@
-require './rental'
+# rental_manager.rb
+
+require_relative 'rental'  # Adjust the path accordingly based on your project structure
 
 class RentalManager
-  def create_rental(date, book, person)
-    Rental.new(date, book, person)
+  attr_accessor :all_rentals
+
+  def initialize
+    @all_rentals = []
   end
 
-  def get_rental(id, all_persons)
-    all_persons.find { |person| person.id == id }
+  def create_rental(id, date, book, person)
+    rental = Rental.new(id, date, book, person)
+    @all_rentals.push(rental)
+  end
+
+  def find_rental_by_id(id)
+    @all_rentals.find { |rental| rental.id == id }
+  end
+
+  def get_rental(id)
+    find_rental_by_id(id)
   end
 end

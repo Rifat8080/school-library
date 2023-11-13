@@ -1,4 +1,4 @@
-require './person'
+# student.rb
 
 class Student < Person
   attr_reader :classroom
@@ -17,3 +17,4 @@ class Student < Person
     '¯\(ツ)/¯'
   end
 end
+
