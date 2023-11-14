@@ -72,8 +72,8 @@ class App
       puts 'The books list is empty'
     else
       puts 'Books list:'
-      @books.each_with_index do |book, index|
-        puts "#{index + 1}-[Book] Title: #{book.title} | Author: #{book.author}"
+      @books.each_with_index do |book|
+        puts "Title: #{book.author} | Author: #{book.title}"
       end
     end
   end
