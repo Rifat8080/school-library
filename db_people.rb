@@ -2,7 +2,7 @@ require 'json'
 
 module PeoplePersistence
   def check_files(file)
-    !(File.exist?(file) && File.read(file) != '') && File.write(file, '[]')
+    !(File.exist?(file) && !File.empty?(file)) && File.write(file, '[]')
   end
 
   def store_people(people)
@@ -34,7 +34,7 @@ module PeoplePersistence
     check_files(teachers_file)
     check_files(students_file)
     unless File.exist?(teachers_file) && File.exist?(students_file) &&
-           File.read(teachers_file) != '' && File.read(students_file) != ''
+           !File.empty?(teachers_file) && !File.empty?(students_file)
       return data
     end
 

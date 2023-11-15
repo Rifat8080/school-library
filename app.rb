@@ -72,7 +72,7 @@ class App
       puts 'The books list is empty'
     else
       puts 'Books list:'
-      @books.each_with_index do |book|
+      @books.each do |book|
         puts "Title: #{book.author} | Author: #{book.title}"
       end
     end
@@ -81,11 +81,13 @@ class App
   def list_people
     puts '-' * 50
     if @people.empty?
-      puts "The people\'s list is empty"
+      puts "The people's list is empty"
     else
       puts 'People list:'
       @people.each_with_index do |per, i|
-        puts "#{i + 1}-[Teacher] ID: #{per.id} | Name: #{per.name} | Specialization: #{per.specialization} | Age: #{per.age}" if per.is_a?(Teacher)
+        if per.is_a?(Teacher)
+          puts "#{i + 1}-[Teacher] ID: #{per.id} | Name: #{per.name} | Specialization: #{per.specialization} | Age: #{per.age}"
+        end
         puts "#{i + 1}-[Student] ID: #{per.id} | Name: #{per.name} | Age: #{per.age}" if per.is_a?(Student)
       end
     end
@@ -107,7 +109,7 @@ class App
   end
 
   def create_student(name, age)
-    parent_permission = user_input("Has parent\'s persmission? [Y/N]: ")
+    parent_permission = user_input("Has parent's persmission? [Y/N]: ")
     parent_permission = true if parent_permission == ('y' || 'Y')
     parent_permission = false if parent_permission == ('n' || 'N')
     @people << Student.new(Random.rand(1..1000), age, 'class', name, parent_permission: parent_permission)
@@ -116,15 +118,15 @@ class App
   end
 
   def create_teacher(name, age)
-    specialization = user_input("Teacher\'s specialization: ")
+    specialization = user_input("Teacher's specialization: ")
     @people << Teacher.new(Random.rand(1..1000), age, specialization, name)
     puts "Teacher (#{name}) has been created successfully"
     store_people(@people)
   end
 
   def create_book
-    title = user_input("Book\'s title: ")
-    author = user_input("Book\'s author: ")
+    title = user_input("Book's title: ")
+    author = user_input("Book's author: ")
     @books << Book.new(title, author, nil)
     puts "Book (#{title} By #{author}) has been created and saved successfully"
     store_books(@books)
@@ -134,7 +136,7 @@ class App
     if @books.empty?
       puts 'Books list is empty, please create a book first'
     elsif @people.empty?
-      puts "People\'s list is empty, please create a person first"
+      puts "People's list is empty, please create a person first"
     else
       list_books
       book_number = user_input('Select a book from the following list by number: ').to_i
@@ -150,7 +152,7 @@ class App
 
   def list_rentals
     list_people
-    input_id = user_input("Person\'s ID: ").to_i
+    input_id = user_input("Person's ID: ").to_i
     selected_person = @rentals.select { |rental| rental.person == input_id }
     if selected_person.empty?
       puts "No rentals are found for (#{input_id})"

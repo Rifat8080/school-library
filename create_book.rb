@@ -1,4 +1,4 @@
-require_relative './book'
+require_relative 'book'
 require './db_books'
 
 class CreateBook
