@@ -1,13 +1,12 @@
-# rental.rb
-
 class Rental
-  attr_accessor :id, :date, :book, :person
+  attr_accessor :date, :person, :book
 
-  def initialize(id, date, book, person)
-    @id = id
-    @date = date
-    @book = book
+  def initialize(date, person, book)
     @person = person
-    person.rentals << self unless person.nil?
+    @book = book
+    @date = date
+
+    @person.add_rental(self)
+    @book.add_rental(self)
   end
 end
