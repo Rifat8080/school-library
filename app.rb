@@ -86,7 +86,8 @@ class App
       puts 'People list:'
       @people.each_with_index do |per, i|
         if per.is_a?(Teacher)
-          puts "#{i + 1}-[Teacher] ID: #{per.id} | Name: #{per.name} | Specialization: #{per.specialization} | Age: #{per.age}"
+          puts "#{i + 1}-[Teacher] ID: #{per.id} | Name: #{per.name} | Specialization: #{per.specialization} |
+          Age: #{per.age}"
         end
         puts "#{i + 1}-[Student] ID: #{per.id} | Name: #{per.name} | Age: #{per.age}" if per.is_a?(Student)
       end
